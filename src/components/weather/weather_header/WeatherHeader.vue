@@ -90,7 +90,7 @@
         </div>
         
         <button v-if="blockLenght > 1" @click="$emit('remove')" class="weather_header-btn btn-w-icon">
-            <Delete/>
+            <Delete :h="'20px'" :w="'20px'"/>
         </button>
     </div>
 </template>

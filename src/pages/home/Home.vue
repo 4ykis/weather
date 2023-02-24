@@ -2,12 +2,13 @@
     import Weather from "@/components/weather/Weather.vue";
     import Modal from "@/components/modal/Modal.vue";
     import Header from '@/components/header/Header.vue';
+    import { getUserCity } from '@/helpers/helpers.js'
 
     export default {
         data() {
             return {
-                userLocationData: this.$store.state.userLocationData,
-                showModal: false
+                showModal: false,
+                userLocation: this.$store.state.userLocationData
             }
         },
         computed: {
@@ -16,6 +17,11 @@
             }
         },
         methods: {
+            async getUserLocation() {
+                let userData = await getUserCity();
+                console.log(userData);
+                this.$store.dispatch('addUserLocation', userData);
+            },
             addAnotherWeatherBlock() {
                 if (this.showedBlocks.length >= 5) {
                     this.showModal = true;
@@ -23,6 +29,9 @@
                     this.$store.dispatch('addWeatherBlock');
                 }
             }
+        },
+        created() {
+            this.getUserLocation();
         },
         components: {
             Weather,

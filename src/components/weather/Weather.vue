@@ -15,7 +15,7 @@
                 city: null,
                 chartType: "",
                 showModal: false,
-                showPreloader: false,
+                showPreloader: true,
                 textModal: "",
                 isConfirmModal: true
             }
