@@ -1,24 +1,24 @@
 <script>
-import Weather from "@/components/weather/Weather.vue";
-import Header from '@/components/header/Header.vue';
+    import Weather from "@/components/weather/Weather.vue";
+    import Header from '@/components/header/Header.vue';
 
-import { mapGetters } from 'vuex';
+    import { mapGetters } from 'vuex';
 
-export default {
-    computed: {
-        ...mapGetters(['getSavedCity']),
-        savedCity() {
-            return this.getSavedCity;
+    export default {
+        computed: {
+            ...mapGetters(['getSavedCity']),
+            savedCity() {
+                return this.getSavedCity;
+            },
+            showedBlocks() {
+                return this.$store.state.weatherBlockData
+            }
         },
-        showedBlocks() {
-            return this.$store.state.weatherBlockData
+        components: {
+            Weather,
+            Header
         }
-    },
-    components: {
-        Weather,
-        Header
     }
-}
 </script>
 
 <template>
@@ -26,7 +26,7 @@ export default {
     <div class="container">
         <template v-if="savedCity.length">
             <template v-for="city in savedCity" :key="city">
-                <Weather :initData="city" :isSavedPage="true" />
+                <Weather :initData="city" :isSavedPage="true"/>
             </template>
         </template>
         <div v-else class="no-saved">
@@ -38,5 +38,5 @@ export default {
 
 
 <style lang="scss">
-@import 'saved.scss';
+    @import 'saved.scss';
 </style>

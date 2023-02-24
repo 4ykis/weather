@@ -46,7 +46,7 @@ function countMostDuplicates(arr) {
     const result = [];
     for (const elem in count) {
         if (count[elem] === maxCount) {
-            result.push(elem);
+        result.push(elem);
         }
     }
 
@@ -79,7 +79,7 @@ function parseWeekData(data) {
             dateMonth = "0" + (date.getMonth() + 1);
         }
         let dateDayMonth = `${date.getDate()}.${dateMonth}`;
-        if (!days[dateDayMonth]) {
+        if ( !days[dateDayMonth] ) {
             days[dateDayMonth] = {
                 current: [el.main.temp],
                 feels: [el.main.feels_like],
@@ -113,11 +113,11 @@ function parseWeekData(data) {
         days[item].wind.forEach(el => windAverage += el);
         days[item].humidity.forEach(el => humidityAverage += el);
 
-        days[item].current = +(currentAverage / days[item].current.length).toFixed(2);
-        days[item].feels = +(feelsAverage / days[item].feels.length).toFixed(2);
-        days[item].clouds = +(cloudsAverage / days[item].clouds.length).toFixed(2);
-        days[item].wind = +(windAverage / days[item].wind.length).toFixed(2);
-        days[item].humidity = +(humidityAverage / days[item].humidity.length).toFixed(2);
+        days[item].current = +(currentAverage/days[item].current.length).toFixed(2);
+        days[item].feels = +(feelsAverage/days[item].feels.length).toFixed(2);
+        days[item].clouds = +(cloudsAverage/days[item].clouds.length).toFixed(2);
+        days[item].wind = +(windAverage/days[item].wind.length).toFixed(2);
+        days[item].humidity = +(humidityAverage/days[item].humidity.length).toFixed(2);
 
         avgData.temp += days[item].current;
         avgData.feels += days[item].feels;
@@ -127,7 +127,7 @@ function parseWeekData(data) {
 
         icons = icons.concat(days[item].icons);
         id = id.concat(days[item].id);
-
+        
         DATA.hourly.push({
             label: item,
             temp: days[item].current,
@@ -138,12 +138,12 @@ function parseWeekData(data) {
     icons = countMostDuplicates(icons);
     id = countMostDuplicates(id);
 
-    avgData.temp = +(avgData.temp / Object.keys(days).length).toFixed(2);
-    avgData.feels = +(avgData.feels / Object.keys(days).length).toFixed(2);
-    avgData.clouds = +(avgData.clouds / Object.keys(days).length).toFixed(2);
-    avgData.wind = +(avgData.wind / Object.keys(days).length).toFixed(2);
-    avgData.humidity = +(avgData.humidity / Object.keys(days).length).toFixed(2);
-
+    avgData.temp = +(avgData.temp/Object.keys(days).length).toFixed(2);
+    avgData.feels = +(avgData.feels/Object.keys(days).length).toFixed(2);
+    avgData.clouds = +(avgData.clouds/Object.keys(days).length).toFixed(2);
+    avgData.wind = +(avgData.wind/Object.keys(days).length).toFixed(2);
+    avgData.humidity = +(avgData.humidity/Object.keys(days).length).toFixed(2);
+    
     DATA.current = {
         clouds: avgData.clouds,
         feels_like: avgData.feels,

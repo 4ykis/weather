@@ -4,7 +4,7 @@ import { getSavedCity, saveCity, getUserCity } from '@/helpers/helpers.js'
 const Store = createStore({
     state: {
         savedWeatherBlock: getSavedCity(),
-        weatherBlockData: [getUserCity()],
+        weatherBlockData: [await getUserCity()],
         userLocationData: { name: "Lviv", lat: "49.8383", lon: "24.0232" },
     },
     mutations: {
