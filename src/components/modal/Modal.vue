@@ -1,15 +1,15 @@
 <script>
-    import Close from "@/components/icons/Close.vue";
-    export default {
-        props: {
-            show: Boolean,
-            title: String,
-            isConfirm: Boolean,
-        },
-        components: {
-            Close
-        }
-    };
+import Close from "@/components/icons/Close.vue";
+export default {
+    props: {
+        show: Boolean,
+        title: String,
+        isConfirm: Boolean,
+    },
+    components: {
+        Close
+    }
+};
 </script>
 
 <template>
@@ -37,5 +37,5 @@
 
 
 <style lang="scss" scoped>
-    @import 'modal.scss';
+@import 'modal.scss';
 </style>

@@ -30,19 +30,14 @@ export default {
             return Boolean(res);
         },
         savedLenght() {
-            return this.$store.state.savedWeatherBlock.length 
+            return this.$store.state.savedWeatherBlock.length
         }
-    },
-    props: {
-        isSavedPage: Boolean,
-        initData: Object,
-        index: Number
     },
     methods: {
         setBackground() {
             let id = this.data.current.weather[0].id;
             let img = "";
-            
+
             if (id > 800) {
                 img = 'clouds';
             } else if (id == 800) {
@@ -66,7 +61,7 @@ export default {
         async setCity(city) {
             this.city = city;
             await this.getDayWeatherData(this.city.lon, this.city.lat);
-            this.$store.dispatch('changeWeatherBlockData', { city: this.city, i: this.index});
+            this.$store.dispatch('changeWeatherBlockData', { city: this.city, i: this.index });
         },
         removeCurrentBlock() {
             this.$store.dispatch('removeWeatherBlock', this.index);
@@ -136,6 +131,11 @@ export default {
     mounted() {
         this.getDayWeatherData(this.initData.lon, this.initData.lat);
     },
+    props: {
+        isSavedPage: Boolean,
+        initData: Object,
+        index: Number
+    },
     components: {
         Preloader,
         WeatherHeader,
@@ -148,29 +148,15 @@ export default {
 
 <template>
     <div class="weather" ref="weather">
-        <WeatherHeader 
-            v-if="!isSavedPage"
-            @selected="setCity"
-            @remove="showRemoveModal"
-            :current="city ? city : initData"
-        />
+        <WeatherHeader v-if="!isSavedPage" @selected="setCity" @remove="showRemoveModal"
+            :current="city ? city : initData" />
         <div class="weather-container" v-if="data">
-            <WeatherBlock 
-                :data="data.current" 
-                :city="city ? city.name : initData.name"
-                @toggleState="toggleWeekData"
-                @save="saveCurrentCity"
-                :isSaved="isSaved"
-            />
-            <WeatherGraph :data="data.hourly" :type="chartType"/>
+            <WeatherBlock :data="data.current" :city="city ? city.name : initData.name" @toggleState="toggleWeekData"
+                @save="saveCurrentCity" :isSaved="isSaved" />
+            <WeatherGraph :data="data.hourly" :type="chartType" />
         </div>
-        <Modal
-            :show="showModal"
-            :isConfirm="isConfirmModal"
-            @close="showModal = false"
-            @decline="showModal = false"
-            @confirm="removeCurrentBlock"
-        >
+        <Modal :show="showModal" :isConfirm="isConfirmModal" @close="showModal = false" @decline="showModal = false"
+            @confirm="removeCurrentBlock">
             {{ textModal }}
         </Modal>
         <Preloader :show="showPreloader" :isPage="false" />
@@ -179,5 +165,5 @@ export default {
 
 
 <style lang="scss" scoped>
-    @import 'weather.scss';
+@import 'weather.scss';
 </style>

@@ -1,17 +1,17 @@
 <script>
-    export default {
-        props: {
-            show: Boolean,
-            isPage: {
-                type: Boolean,
-                default: true
-            }
+export default {
+    props: {
+        show: Boolean,
+        isPage: {
+            type: Boolean,
+            default: true
         }
-    };
+    }
+};
 </script>
 
 <template>
-    <div :class="['preloader', {'m-page': isPage}]" v-if="show">
+    <div :class="['preloader', { 'm-page': isPage }]" v-if="show">
         <div class="preloader-overlay"></div>
         <div class="preloader-animation">
             <div class="preloader-circle m-first"></div>
@@ -23,5 +23,5 @@
 
 
 <style lang="scss" scoped>
-    @import 'preloader.scss';
+@import 'preloader.scss';
 </style>

@@ -6,12 +6,12 @@ export default createRouter({
     history: createWebHistory(),
     routes: [
         {
-            path: '/', 
+            path: '/',
             name: 'Home',
             component: Home
         },
         {
-            path: '/saved', 
+            path: '/saved',
             name: 'Saved',
             component: Saved
         },

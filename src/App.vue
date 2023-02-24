@@ -1,18 +1,19 @@
-<template>    
+<template>
     <router-view></router-view>
 </template>
 
 <style>
-    * {
-        box-sizing: border-box;    
-    }
+* {
+    box-sizing: border-box;
+}
 
-    *:focus {
-        outline: none;
-    }
+*:focus {
+    outline: none;
+}
 
-    body, html {
-        padding: 0;
-        margin: 0;
-    }
+body,
+html {
+    padding: 0;
+    margin: 0;
+}
 </style>
