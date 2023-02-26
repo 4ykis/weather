@@ -5,7 +5,7 @@ const Store = createStore({
     state: {
         savedWeatherBlock: getSavedCity(),
         weatherBlockData: [],
-        userLocationData: { name: "London", lat: 51.50853, lon: -0.12574 },
+        userLocationData: { name: "Lviv", lat: "49.8383", lon: "24.0232" },
     },
     mutations: {
         addWeatherBlock(state) {

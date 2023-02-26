@@ -7,9 +7,8 @@
                 chart: null
             }
         },
-        props: {
-            data: Object,
-            type: String
+        mounted() {
+            this.renderChart();
         },
         methods:{
             renderChart() {
@@ -80,8 +79,9 @@
                 });
             }
         },
-        mounted() {
-            this.renderChart();
+        props: {
+            data: Object,
+            type: String
         },
         watch: {
             data() {

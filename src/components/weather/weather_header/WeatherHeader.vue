@@ -18,8 +18,8 @@
                 return this.$store.state.weatherBlockData.length 
             }
         },
-        props: {
-            current: Object
+        watch: {
+            
         },
         methods: {
             searchCity: debounce(function() {
@@ -65,6 +65,9 @@
         },
         destroyed() {
             document.removeEventListener('click', this.handleClickOutside);
+        },
+        props: {
+            current: Object
         },
         components: {
             Delete

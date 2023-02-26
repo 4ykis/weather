@@ -7,8 +7,8 @@
     export default {
         data() {
             return {
-                showModal: false,
-                userLocation: this.$store.state.userLocationData
+                userLocationData: this.$store.state.userLocationData,
+                showModal: false
             }
         },
         computed: {
@@ -18,9 +18,10 @@
         },
         methods: {
             async getUserLocation() {
-                let userData = await getUserCity();
-                console.log(userData);
-                this.$store.dispatch('addUserLocation', userData);
+                if (!this.$store.state.weatherBlockData.length) {
+                    let userData = await getUserCity();
+                    this.$store.dispatch('addUserLocation', userData);
+                }
             },
             addAnotherWeatherBlock() {
                 if (this.showedBlocks.length >= 5) {
