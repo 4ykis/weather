@@ -4,7 +4,7 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: '/weather-2/',
+    base: '/weather/',
     plugins: [vue()],
     resolve: {
         alias: {
